@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TBC.RekoTool", "src\TBC.RekoTool\TBC.RekoTool.csproj", "{E4FB6DF3-1859-47ED-86C1-F6FF09BC250F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4FB6DF3-1859-47ED-86C1-F6FF09BC250F}.Release|x64.ActiveCfg = Release|x64
+		{E4FB6DF3-1859-47ED-86C1-F6FF09BC250F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {889341ED-2F8A-4C89-AFA7-930B1CB2D8C2}
+	EndGlobalSection
+EndGlobal
