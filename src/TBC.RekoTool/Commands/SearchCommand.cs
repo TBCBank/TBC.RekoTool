@@ -71,13 +71,22 @@ internal sealed class SearchCommand
         var files = this.options.Directory.EnumerateFiles(this.options.Pattern, enumerationOptions);
 
         // CSV column headers:
-        Console.WriteLine("FileName,FileSize,TimeTaken,FaceID,Similarity");
+        Console.WriteLine("FileName,FileSize,Dimensions,TimeTaken,FaceID,Similarity");
 
         var watch = new Stopwatch();
 
         foreach (FileInfo file in files)
         {
             using var stream = new DecoyMemoryStream(file.OpenRead(), leaveOpen: false);
+
+            string imageDimensions = null;
+
+            using (var image = System.Drawing.Image.FromStream(stream, true, true))
+            {
+                imageDimensions = $"{image.Width}x{image.Height}";
+            }
+
+            stream.Position = 0L;
 
             watch.Restart();
 
@@ -93,7 +102,7 @@ internal sealed class SearchCommand
             watch.Stop();
 
             // CSV values:
-            Console.Write("{0},{1},{2},", file.Name, file.Length, watch.ElapsedMilliseconds);
+            Console.Write("{0},{1},{2},{3},", file.Name, file.Length, imageDimensions, watch.ElapsedMilliseconds);
 
             if (result.FaceMatches != null && result.FaceMatches.Count > 0)
             {
