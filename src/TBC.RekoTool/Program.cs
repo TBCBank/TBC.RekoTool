@@ -42,6 +42,7 @@ public static class Program
             new Option<DirectoryInfo>("--directory", getDefaultValue: () => new DirectoryInfo(Directory.GetCurrentDirectory())),
             new Option<string>("--pattern", getDefaultValue: () => "*.jpg"),
             new Option<string>("--collectionID") { Required = true },
+            new Option<bool>("--recurse", getDefaultValue: () => false),
         };
 
         var searchCommand = new Command("search")
@@ -49,6 +50,7 @@ public static class Program
             new Option<DirectoryInfo>("--directory", getDefaultValue: () => new DirectoryInfo(Directory.GetCurrentDirectory())),
             new Option<string>("--pattern", getDefaultValue: () => "*.jpg"),
             new Option<string>("--collectionID") { Required = true },
+            new Option<bool>("--recurse", getDefaultValue: () => false),
         };
 
         collectCommand.Handler = CommandHandler.Create<CollectOptions>(options => new CollectCommand(options).ExecuteAsync());

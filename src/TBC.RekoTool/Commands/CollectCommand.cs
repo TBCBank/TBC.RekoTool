@@ -39,20 +39,20 @@ internal sealed class CollectCommand
         { "ALL" }, { "DEFAULT" }
     };
 
-    private static readonly EnumerationOptions enumerationOptions = new EnumerationOptions
-    {
-        IgnoreInaccessible       = true,
-        MatchCasing              = MatchCasing.CaseInsensitive,
-        MatchType                = MatchType.Simple,
-        RecurseSubdirectories    = false,
-        ReturnSpecialDirectories = false,
-    };
-
+    private readonly EnumerationOptions enumerationOptions;
     private readonly CollectOptions options;
 
     public CollectCommand(CollectOptions options)
     {
         this.options = options;
+        this.enumerationOptions = new EnumerationOptions
+        {
+            IgnoreInaccessible       = true,
+            MatchCasing              = MatchCasing.CaseInsensitive,
+            MatchType                = MatchType.Simple,
+            RecurseSubdirectories    = this.options.Recurse,
+            ReturnSpecialDirectories = false,
+        };
     }
 
     public async Task ExecuteAsync()

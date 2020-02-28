@@ -34,20 +34,20 @@ using Amazon.Runtime;
 
 internal sealed class SearchCommand
 {
-    private static readonly EnumerationOptions enumerationOptions = new EnumerationOptions
-    {
-        IgnoreInaccessible       = true,
-        MatchCasing              = MatchCasing.CaseInsensitive,
-        MatchType                = MatchType.Simple,
-        RecurseSubdirectories    = false,
-        ReturnSpecialDirectories = false,
-    };
-
+    private readonly EnumerationOptions enumerationOptions;
     private readonly SearchOptions options;
 
     public SearchCommand(SearchOptions options)
     {
         this.options = options;
+        this.enumerationOptions = new EnumerationOptions
+        {
+            IgnoreInaccessible       = true,
+            MatchCasing              = MatchCasing.CaseInsensitive,
+            MatchType                = MatchType.Simple,
+            RecurseSubdirectories    = this.options.Recurse,
+            ReturnSpecialDirectories = false,
+        };
     }
 
     public async Task ExecuteAsync()

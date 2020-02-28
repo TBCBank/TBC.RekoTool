@@ -36,10 +36,11 @@ sealed class CollectOptions
     public DirectoryInfo Directory { get; set; }
     public string Pattern { get; set; }
     public string CollectionID { get; set; }
+    public bool Recurse { get; set; }
 
     public CollectOptions(
         string accessKey, string secretKey, RegionEndpoint region,
-        DirectoryInfo directory, string pattern, string collectionID)
+        DirectoryInfo directory, string pattern, string collectionID, bool recurse)
     {
         this.AccessKey = accessKey;
         this.SecretKey = secretKey;
@@ -48,5 +49,6 @@ sealed class CollectOptions
         this.Directory = directory;
         this.Pattern = pattern;
         this.CollectionID = collectionID;
+        this.Recurse = recurse;
     }
 }
